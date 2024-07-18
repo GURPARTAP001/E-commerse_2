@@ -1,66 +1,65 @@
-import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
-import {auth} from '../Config'
-import {useNavigate} from 'react-router-dom'
-import './Login.css'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../Config';
+import './Auth.css';
 
-export const Login = () => {
-
+const Login = () => {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
-    const [email, setEmail]=useState('');
-    const [password, setPassword]=useState('');
-
-    const [errorMsg, setErrorMsg]=useState('');
-    const [successMsg, setSuccessMsg]=useState('');
-
-    const handleLogin=(e)=>{
+    const handleLogin = (e) => {
         e.preventDefault();
-        // console.log(email, password);
-        auth.signInWithEmailAndPassword(email,password).then(()=>{
-            setSuccessMsg('Login Successfull. You will now automatically get redirected to Home page');
+        auth.signInWithEmailAndPassword(email, password).then(() => {
+            setSuccessMsg('Login Successful. You will now be redirected to the Home page.');
             setEmail('');
             setPassword('');
             setErrorMsg('');
-            setTimeout(()=>{
+            setTimeout(() => {
                 setSuccessMsg('');
                 navigate('/');
-            },500)
-        }).catch(error=>setErrorMsg(error.message));
-    }
+            }, 500);
+        }).catch(error => setErrorMsg(error.message));
+    };
 
     return (
-        <div className='container'>
-            <br></br>
-            <br></br>
-            <h1>Login</h1>
-            <hr></hr>
-            {successMsg&&<>
-                <div className='success-msg'>{successMsg}</div>
-                <br></br>
-            </>}
-            <form className='form-group' autoComplete="off"
-            onSubmit={handleLogin}>               
-                <label>Email</label>
-                <input type="email" className='form-control' required
-                onChange={(e)=>setEmail(e.target.value)} value={email}></input>
-                <br></br>
-                <label>Password</label>
-                <input type="password" className='form-control' required
-                onChange={(e)=>setPassword(e.target.value)} value={password}></input>
-                <br></br>
-                <div className='btn-box'>
-                    <span>Don't have an account SignUp
-                    <Link to="/signup" className='link'> Here</Link></span>
-                    <button type="submit" className='btn btn-success btn-md'>LOGIN</button>
-                </div>
-            </form>
-            {errorMsg&&<>
-                <br></br>
-                <div className='error-msg'>{errorMsg}</div>                
-            </>}
+        <div className="main_man">
+        <div className="auth-container">
+            <div className="auth-left">
+                <h2>Welcome Back!</h2>
+                <p>To keep connected with us please login with your personal info</p>
+                <Link to="/signup">
+                    <button className="ghost-button">Sign Up</button>
+                </Link>
+            </div>
+            <div className="auth-right">
+                <form className="auth-form" onSubmit={handleLogin}>
+                    <h2>Login</h2>
+                    {successMsg && <div className="success-msg">{successMsg}</div>}
+                    {errorMsg && <div className="error-msg">{errorMsg}</div>}
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         </div>
-    )
-}
 
-export default Login
+    </div>
+    );
+};
+
+export default Login;

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import logo from '../Images/logo.png'
+import logo from '../Images/logo1.png'
 import {Icon} from 'react-icons-kit'
 import {shoppingCart} from 'react-icons-kit/feather/shoppingCart'
 import {auth} from '../Config'

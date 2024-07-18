@@ -3,6 +3,7 @@ import  Navbar  from './Navbar'
 import  Products  from './Products'
 import {auth,fs} from '../Config'
 import { useNavigate } from 'react-router-dom'
+import './Home.css'
 
 export const Home = (props) => {
 
