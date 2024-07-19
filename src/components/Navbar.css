@@ -1,0 +1,176 @@
+/* Navbar.css */
+
+/* General styles */
+.navbar {
+    width: 100%;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f6f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  
+  
+  
+  .intro{
+    display: flex;
+    align-items: center;
+    margin-left: 01px;
+  }
+  .logo{
+    width: 75px;
+    height: auto;
+    margin-right: 1px;
+
+  }
+  .intro h1{
+    color: #faab28;
+  }
+  
+  .logo img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .rightside {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  
+  .rightside div {
+    margin: 0 10px;
+    text-align: center;
+  }
+  
+  .navlink {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logout{
+    display: flex;
+    flex-direction: column;
+  }
+  .logout:hover{
+    color: #e00a02;
+  }
+
+  .navlink:hover {
+    color: #6e8efb;
+  }
+  
+  .cart-menu-btn {
+    position: relative;
+  }
+  
+  .cart-indicator {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #e00a02;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
+  .toggle-mode button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4B46DF;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Hamburger Menu Styles */
+  .hamburger {
+    display: none; /* Hide the hamburger on larger screens */
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #EFC418; 
+    margin: 4px 0;
+    transition: 0.4s;
+    margin-right: 10px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 813px) {
+    .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .hamburger {
+      display: flex; /* Show the hamburger on smaller screens */
+    }
+  
+    /* Slide-in Menu Styles */
+    .rightside {
+      display: flex; /* Make sure the menu is visible before sliding in */
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -250px; /* Initially off-screen to the left */
+      width: 250px;
+      height: 100%;
+      background-color: #f6f6f6;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+      padding-top: 60px; /* Adjust based on your navbar height */
+      gap: 20px; /* Add space between menu options */
+    }
+  
+    .navbar.active .rightside {
+      right: 0; /* Slide the menu to the right when the hamburger is clicked */
+    }
+  
+    /* Dark Mode Toggle for Sliding Menu */
+    .navbar.dark-mode .rightside {
+      background-color: #333; /* Dark background */
+      color: #e0e0e0; /* Light text */
+    }
+  
+    .navbar.dark-mode .rightside .navlink {
+      color: #e0e0e0; /* Light text */
+    }
+  
+    .navbar.dark-mode .rightside .navlink:hover {
+      color: #bb86fc; /* Light purple on hover */
+    }
+  }
+  
+  /* Larger Screen Styles */
+  @media (min-width: 813px) {
+    /* Keep the rightside visible and in its original position */
+    .rightside {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  
+    .hamburger {
+      display: none; /* Hide the hamburger on larger screens */
+    }
+  }
+  
