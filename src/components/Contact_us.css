@@ -1,0 +1,212 @@
+/* Contact_us.css */
+
+/* General Styles */
+.contact-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f8f8; /* Light gray background */
+    /* padding: 2rem; */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .contact-us-content {
+    max-width: 800px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-us-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333; /* Dark gray heading */
+  }
+  
+  .contact-us-content p {
+    line-height: 1.6;
+    color: #555; /* Slightly lighter gray for body text */
+  }
+  
+  /* Contact Information Section */
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Light gray card background */
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 28%; /* Adjust width for card spacing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Add space between cards on smaller screens */
+    /* height: 150px; */
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  .contact-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #6e8efb; /* Blue icon color */
+    animation: icon-spin 2s linear infinite; /* Add a spinning animation */
+  }
+  
+  .contact-item a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-item a:hover {
+    color: #6e8efb; /* Blue on hover */
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .form-group {
+   
+    margin-bottom: 1rem;
+    width: 50%;
+  }
+  
+  
+  .form-group input, 
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd; /* Subtle border */
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 0px; /* Spacing between inputs */
+  }
+  
+  .form-group input:focus, 
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #6e8efb;
+  }
+  
+  /* Send Button */
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    background-color: #6e8efb; /* Blue button */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #5577e3; /* Darker blue on hover */
+  }
+  
+  .send-icon {
+    margin-right: 0.5rem;
+    animation: icon-pulse 1.5s ease-in-out infinite;
+  }
+  
+  /* Animations */
+  @keyframes icon-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes icon-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .contact-item {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-item {
+      width: 100%; /* One card per row on mobile */
+    }
+  
+    .contact-us-content {
+      padding: 1rem; /* Reduce padding on very small screens */
+    }
+  
+    .contact-form {
+      margin-top: 2rem; /* More space above form on smaller screens */
+    }
+  }
+  
+
+  
+
+
+
+
+
+
+
+/* input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd; 
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 0px; 
+} */
+
+/* Focus Effect */
+input:focus {
+  outline: none; /* Remove default browser outline */
+  border-color: #4CAF50; /* Green focus color */
+  box-shadow: 0 0 10px rgba(0, 150, 0, 0.5); /* Add a green glow */
+}
+
+/* Eye-Catching Hover Effects */
+input:hover {
+  border-color: #008CBA; /* Blue hover color */
+  box-shadow: 0 0 5px rgba(0, 128, 255, 0.3); /* Add a blue shadow */
+  cursor: pointer; /* Indicate interactivity */
+}
+
+/* Optional: Add a placeholder with a subtle color */
+input::placeholder {
+  color: #999; /* Light gray placeholder color */
+}

@@ -5,6 +5,7 @@ import  CartProducts  from './CartProducts';
 import StripeCheckout from 'react-stripe-checkout';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './Cart.css'
 // import { Toast } from 'bootstrap';
 
 import { toast } from 'react-toastify';
@@ -208,7 +209,7 @@ export const Cart = () => {
                         Total No of Products: <span>{totalQty}</span>
                         </div>
                         <div>
-                        Total Price to Pay: <span>$ {totalPrice}</span>
+                        Total Price to Pay: <span>₹ {totalPrice}</span>
                         </div>
                         <br></br>
                         <StripeCheckout

@@ -35,7 +35,7 @@ body.dark-mode .product .card-description {
 }
 
 body.dark-mode .cart-btn {
-  background-color: #bb86fc;
+  background-color: #cd7228;
   color: #1e1e1e;
 }
 
@@ -46,6 +46,80 @@ body.dark-mode .auth-left {
 body.dark-mode .auth-form button:hover {
   background: #bb86fc;
 }
+
+body.dark-mode .action-btns {
+  color: #07546e;
+  background:#cd7228 ;
+}
+
+body.dark-mode .price span {
+  color: white;
+  
+}
+
+body.dark-mode .cart-price span {
+  color: white;
+  
+}
+
+body.dark-mode  .description {
+  color: white;
+  
+}
+
+body.dark-mode  .about-content {
+  color: white;
+  background: #333;
+}
+
+body.dark-mode  .about-content h1 {
+  color: white;
+  
+}
+
+body.dark-mode  .about-content p {
+  color: white;
+  
+}
+
+body.dark-mode  .stat-card{
+  color: rgb(241, 232, 240);
+  background: #cd7228;
+}
+
+body.dark-mode  .about-container{
+  color: rgb(241, 232, 240);
+  background: black;
+}
+
+body.dark-mode  .contact-us-container{
+  color: rgb(241, 232, 240);
+  background: black;
+}
+body.dark-mode  .contact-us-content{
+  color: rgb(241, 232, 240);
+  background: #333;
+}
+
+body.dark-mode  .contact-us-content h1{
+  color: rgb(241, 232, 240);
+  
+}
+body.dark-mode  .contact-us-content p{
+  color: rgb(241, 232, 240);
+  
+}
+
+body.dark-mode  .contact-item{
+  color: rgb(241, 232, 240);
+  background: #cd7228;
+}
+
+
+
+
+
+
 
 /* Light mode styles */
 body {
