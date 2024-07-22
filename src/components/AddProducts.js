@@ -6,6 +6,7 @@ export const AddProducts = () => {
     const [title, setTitle]=useState('');
     const [description, setDescription]=useState('');
     const [price, setPrice]=useState('');
+    const [rating, setRating]=useState('');
     const [image, setImage]=useState(null);
 
     const [imageError, setImageError]=useState('');
@@ -45,18 +46,20 @@ export const AddProducts = () => {
                     title,
                     description,
                     price: Number(price),
+                    rating: Number(rating),
                     url
                 }).then(()=>{
                     setSuccessMsg('Product added successfully');
                     setTitle('');
                     setDescription('');
                     setPrice('');
+                    setRating('');
                     document.getElementById('file').value='';
                     setImageError('');
                     setUploadError('');
                     setTimeout(()=>{
                         setSuccessMsg('');
-                    },500)
+                    },100)
                 }).catch(error=>setUploadError(error.message));
             })
         })
@@ -84,6 +87,11 @@ export const AddProducts = () => {
                 <label>Product Price</label>
                 <input type="number" className='form-control' required
                 onChange={(e)=>setPrice(e.target.value)} value={price}></input>
+                <br></br>
+                <br></br>
+                <label>Product Rating</label>
+                <input type="number" className='form-control' required
+                onChange={(e)=>setPrice(e.target.value)} value={rating}></input>
                 <br></br>
                 <label>Upload Product Image</label>
                 <input type="file" id="file" className='form-control' required
