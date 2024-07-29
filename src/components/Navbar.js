@@ -36,14 +36,15 @@ const Navbar = ({ user, totalProducts }) => {
 
   return (
     <div className={`navbar ${darkMode ? 'dark-mode' : 'light-mode'} ${menuActive ? 'active' : ''}`}>
-      <div className='intro'>
+      <Link to='/' style={{textDecoration: 'none'}}>
+        <div className='intro'>
+      
         <div className='logo'>
-        <Link to='/'>
           <img src={logo} alt='logo' />
-        </Link>
         </div>
-        <h1>Bazaar</h1>
+        <div> <h1>Bazaar</h1></div>
       </div>
+      </Link>
       <div className='hamburger' onClick={toggleMenu}>
         <div></div>
         <div></div>

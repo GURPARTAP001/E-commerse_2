@@ -14,11 +14,11 @@
 
   
   
-  
   .intro{
     display: flex;
     align-items: center;
     margin-left: 01px;
+    text-decoration: none;
   }
   .logo{
     width: 75px;
@@ -28,6 +28,7 @@
   }
   .intro h1{
     color: #faab28;
+    
   }
   
   .logo img {

@@ -75,6 +75,7 @@
   .cart-btn:hover {
     background-color: #c00902;
   }
+
   
   /* Responsive styles */
   @media (max-width: 768px) {
