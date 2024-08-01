@@ -4,6 +4,7 @@ import {plus} from 'react-icons-kit/feather/plus'
 import {minus} from 'react-icons-kit/feather/minus'
 import {auth,fs} from '../Config'
 import './IndividualCartProduct.css'
+import { useNavigate } from 'react-router-dom';
 
 export const IndividualCartProduct = ({cartProduct,cartProductIncrease,cartProductDecrease}) => {
 
@@ -24,16 +25,22 @@ export const IndividualCartProduct = ({cartProduct,cartProductIncrease,cartProdu
             }
         })
     }
+    const navigate = useNavigate();
+
+    const handleProductClick = () => {
+        navigate(`/product/${cartProduct.ID}`);
+        // <ProductPage addToCart={addToCart}/>
+      };
 
     
     
     return (
-        <div className='product'>
-            <div className='product-img'>
+        <div className='product' >
+            <div className='product-img' onClick={handleProductClick}>
                 <img src={cartProduct.url} alt="product-img"/>
             </div>
-            <div className='product-text title'>{cartProduct.title}</div>
-            <div className='product-text price'><span>Price: </span>₹ {cartProduct.price}</div>
+            <div className='product-text title' onClick={handleProductClick}>{cartProduct.title}</div>
+            <div className='product-text price' onClick={handleProductClick}><span>Price: </span>₹ {cartProduct.price}</div>
             <span>Quantity</span>
             <div className='product-text quantity-box'>
                 <div className='action-btns minus' onClick={handleCartProductDecrease} >

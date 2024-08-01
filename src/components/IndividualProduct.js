@@ -59,7 +59,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './IndividualProduct.css';
-import ProductPage from './ProductPage';
+
 
 const renderStars = (rating) => {
   const stars = [];
@@ -87,7 +87,7 @@ const IndividualProduct = ({ individualProduct,addToCart }) => {
 
   const handleProductClick = () => {
     navigate(`/product/${individualProduct.ID}`);
-    <ProductPage addToCart={addToCart}/>
+    // <ProductPage addToCart={addToCart}/>
   };
 
   return (
