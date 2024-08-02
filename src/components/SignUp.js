@@ -10,6 +10,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const [role, setRole] = useState('user'); // New state variable for role
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -17,7 +18,8 @@ const SignUp = () => {
             fs.collection('users').doc(credentials.user.uid).set({
                 FullName: fullName,
                 Email: email,
-                Password: password
+                Password: password,
+                Role: role,
             }).then(() => {
                 setSuccessMsg('Signup Successful. You will now be redirected to the login page.');
                 setFullname('');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../Images/logo1.png';
 import { Icon } from 'react-icons-kit';
@@ -9,8 +9,10 @@ import { info } from 'react-icons-kit/feather/info';
 import { phone } from 'react-icons-kit/feather/phone';
 import { sun } from 'react-icons-kit/feather/sun';
 import { moon } from 'react-icons-kit/feather/moon';
-import {logout} from 'react-icons-kit/iconic/logout'
-import { auth } from '../Config';
+import {logout} from 'react-icons-kit/iconic/logout';
+import { plus } from 'react-icons-kit/ikons/plus';
+import {ic_add_shopping_cart_twotone} from 'react-icons-kit/md/ic_add_shopping_cart_twotone'
+import { auth,fs } from '../Config';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
@@ -18,6 +20,44 @@ const Navbar = ({ user, totalProducts }) => {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
+  const [role, setRole] = useState(null);
+
+  
+
+// gettin current user uid
+function GetUserUid() {
+  const [uid, setUid] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((User) => {
+      if (User) {
+        setUid(User.uid);
+      }
+    });
+  }, []);
+  return uid;
+}
+
+const uid = GetUserUid();
+
+
+
+  useEffect(() => {
+    if (user) {
+      console.log('User ID:', uid); // Debugging statement
+      fs.collection('users').doc(uid).get().then(snapshot => {
+        const userData = snapshot.data();
+        if (userData) {
+          setRole(userData.Role);
+        } else {
+          console.error('No user data found for user ID:', uid); // Debugging statement
+        }
+      }).catch(error => {
+        console.error('Error fetching user data:', error);
+      });
+    } else {
+      console.log('No user is logged in'); // Debugging statement
+    }
+  }, [user]);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
@@ -33,6 +73,9 @@ const Navbar = ({ user, totalProducts }) => {
     setDarkMode(!darkMode);
     document.body.classList.toggle('dark-mode');
   };
+
+  
+
 
   return (
     <div className={`navbar ${darkMode ? 'dark-mode' : 'light-mode'} ${menuActive ? 'active' : ''}`}>
@@ -74,6 +117,18 @@ const Navbar = ({ user, totalProducts }) => {
             CONTACT US
           </Link>
         </div>
+
+        { role === 'admin' && (
+          <div>
+            <Link className='navlink' to='/add-products'>
+              <Icon icon={ic_add_shopping_cart_twotone} size={25} />
+              ADD PRODUCT
+            </Link>
+          </div>
+        )}
+
+        {console.log(role)}
+        
         {!user && (
           <>
             <div>
@@ -121,3 +176,5 @@ const Navbar = ({ user, totalProducts }) => {
 };
 
 export default Navbar;
+
+

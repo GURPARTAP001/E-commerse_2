@@ -115,7 +115,7 @@
   }
   
   /* Responsive Styles */
-  @media (max-width: 813px) {
+  @media (max-width: 823px) {
     .navbar {
       flex-direction: row;
       justify-content: space-between;
@@ -162,7 +162,7 @@
   }
   
   /* Larger Screen Styles */
-  @media (min-width: 813px) {
+  @media (min-width: 823px) {
     /* Keep the rightside visible and in its original position */
     .rightside {
       display: flex;
