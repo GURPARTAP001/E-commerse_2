@@ -34,7 +34,7 @@
 //         }, []);
 //         return uid;
 //     }
-    
+
 //     const uid = GetUserUid();
 
 //     function GetCurrentUser() {
@@ -121,7 +121,7 @@
 //         }
 //     };
 
-   
+
 
 //     return (
 //         <div>
@@ -209,6 +209,9 @@ import './ProductPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
+import { Icon } from 'react-icons-kit';
+import {user_circle as userIcon} from 'react-icons-kit/ikons/user_circle'
+
 
 const ProductPage = () => {
     const navigate = useNavigate();
@@ -329,7 +332,29 @@ const ProductPage = () => {
         }
     };
 
-    
+
+    const renderStars = (rating) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+          if (i <= rating) {
+            stars.push(<span key={i} className="star filled">⭐</span>);
+          } else {
+            stars.push(<span key={i} className="star">✩</span>);
+          }
+        }
+        return stars;
+      };
+
+      const date_convert=(timestamp)=>{
+        const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const day = date.getDate();
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+        
+        return `${day} ${month} ${year}`;        
+      }
+
 
     if (!product) {
         return <div>Loading...</div>;
@@ -378,12 +403,26 @@ const ProductPage = () => {
                         <div className={`tab-pane ${activeTab === 'reviews' ? 'active' : ''}`}>
                             <ul>
                                 {reviews.map((review, index) => (
-                                    <li key={index}>
-                                        <p><strong>{review.user}</strong> ({review.rating} stars): {review.text}</p>
+                                    <li key={index} className="review-card">
+                                        <div className="user-icon">
+                                            {/* <img src="path/to/user-icon.png" alt="User Icon" /> */}
+                                            <Icon icon={userIcon} size={30} />
+                                            <div className="review-header">
+                                                <strong>{review.user}</strong>
+                                                
+                                            </div>
+                                        </div>
+                                        <div className="review-content">
+                                        <span className="rating"> {renderStars(review.rating)}</span>
+                                            <p className="review-text">{review.text}</p>
+                                        </div>
+                                        <div><p className="review-date">{date_convert(review.timestamp)}</p></div>
+                                        {console.log(date_convert(review.timestamp))}
                                     </li>
+
                                 ))}
                             </ul>
-                            <button onClick={() => setShowModal(true) } >Submit Review</button>
+                            <button onClick={() => setShowModal(true)} >Submit Review</button>
                             {console.log(showModal)}
                         </div>
                         <div className={`tab-pane ${activeTab === 'offers' ? 'active' : ''}`}>
