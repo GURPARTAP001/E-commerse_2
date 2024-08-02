@@ -4,11 +4,7 @@ import Products from './Products';
 import { auth, fs } from '../Config';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
-import sales1 from '../Images/sales1.jpeg';
-import sales2 from '../Images/sales2.jpeg';
-import sales3 from '../Images/sales3.jpeg';
+
 
 export const Home = (props) => {
   const navigate = useNavigate();
@@ -54,6 +50,24 @@ export const Home = (props) => {
   // state of products
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Add a loading state
+  const [role, setRole] = useState(null);
+
+
+  //getting the role
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      if (uid) {
+        const userDoc = await fs.collection('users').doc(uid).get();
+        if (userDoc.exists) {
+          setRole(userDoc.data().Role);
+        }
+      }
+    };
+
+    fetchUserRole();
+  }, [uid]);
+
+
 
   // getting products function
   const getProducts = async () => {
@@ -116,6 +130,7 @@ export const Home = (props) => {
 
   return (
     <>
+    <div>
       <Navbar user={user} totalProducts={totalProducts} />
       <br></br>
 
@@ -126,19 +141,22 @@ export const Home = (props) => {
         </div>
       ) : (
         <>
+        <div className='product-gps'>
           {products.length > 0 && (
             <div className="container-fluid">
               <h1 className="text-center">Products</h1>
               <div className="products-box">
-                <Products products={products} addToCart={addToCart} />
+                <Products products={products} addToCart={addToCart} role={role} />
               </div>
             </div>
           )}
           {products.length < 1 && (
             <div className="container-fluid">No products available yet.</div>
           )}
+          </div>
         </>
       )}
+      </div>
     </>
   );
 };

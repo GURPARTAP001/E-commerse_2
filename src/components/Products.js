@@ -3,7 +3,7 @@ import Masonry from 'react-masonry-css';
 import IndividualProduct from './IndividualProduct';
 import './Products.css';
 
-export const Products = ({ products, addToCart }) => {
+export const Products = ({ products, addToCart ,role}) => {
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
@@ -22,6 +22,7 @@ export const Products = ({ products, addToCart }) => {
           key={individualProduct.ID}
           individualProduct={individualProduct}
           addToCart={addToCart}
+          role={role}
         />
       ))}
     </Masonry>
