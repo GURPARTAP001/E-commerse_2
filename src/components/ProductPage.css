@@ -27,8 +27,11 @@
 
 
 .product-image img {
-  width: 80%;
+  width: 90%;
   height: auto;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  /* mix-blend-mode: color-burn; */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -46,6 +49,29 @@
   align-items: center;
   margin-bottom: 20px;
 }
+
+.product_details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 8px;
+}
+
+.product-details h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.product-details strong {
+  font-weight: bold;
+}
+
 
 .product-price {
   font-size: 1.5em;
@@ -187,6 +213,57 @@
 .product-extra-details button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+
+
+/* /OfferCard.css */
+
+.offer-card_main{
+  margin-bottom: 10px;
+  padding: 0px!important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.offer-card {
+  display: flex;
+  align-items:stretch;
+  justify-content:space-around ;
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.offer-image img {
+  width: 66px;
+  height: auto; 
+ 
+   object-fit: contain;
+}
+
+.offer-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.offer-details h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.offer-details p {
+  margin: 5px 0;
+  color: #333;
 }
 
 

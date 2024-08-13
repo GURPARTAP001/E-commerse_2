@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import { Icon } from 'react-icons-kit';
-import {user_circle as userIcon} from 'react-icons-kit/ikons/user_circle'
+import { user_circle as userIcon } from 'react-icons-kit/ikons/user_circle'
 
 
 const ProductPage = () => {
@@ -19,6 +19,7 @@ const ProductPage = () => {
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState(0);
     const [user, setUser] = useState(null);
+    const [offers, setOffers] = useState([]);
 
 
 
@@ -63,8 +64,21 @@ const ProductPage = () => {
             }
         };
 
+        const fetchOffers = async () => {
+            try {
+                const offersSnapshot = await fs.collection('Offers').get();
+                const offersArray = offersSnapshot.docs.map(doc => doc.data());
+                setOffers(offersArray);
+                
+            } catch (error) {
+                console.error('Error fetching offers:', error);
+            }
+        };
+
         fetchProduct();
         fetchReviews();
+        fetchOffers();
+
     }, [productId]);
 
     useEffect(() => {
@@ -132,31 +146,31 @@ const ProductPage = () => {
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
-          if (i <= rating) {
-            stars.push(<span key={i} className="star filled">⭐</span>);
-          } else {
-            stars.push(<span key={i} className="star">✩</span>);
-          }
+            if (i <= rating) {
+                stars.push(<span key={i} className="star filled">⭐</span>);
+            } else {
+                stars.push(<span key={i} className="star">✩</span>);
+            }
         }
         return stars;
-      };
+    };
 
-      const date_convert=(timestamp)=>{
+    const date_convert = (timestamp) => {
         const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const day = date.getDate();
         const month = months[date.getMonth()];
         const year = date.getFullYear();
-        
-        return `${day} ${month} ${year}`;        
-      }
+
+        return `${day} ${month} ${year}`;
+    }
 
 
     if (!product) {
         return <div>Loading...</div>;
     }
 
-    const { url, title, description, price, rating: productRating, offers } = product;
+    const { url, brandName, genericName, netQuantity, sellerName, title, description, price, rating: productRating } = product;
 
     return (
         <div>
@@ -194,7 +208,17 @@ const ProductPage = () => {
                     </div>
                     <div className="tab-content">
                         <div className={`tab-pane ${activeTab === 'description' ? 'active' : ''}`}>
-                            <p>{description}</p>
+                            {/* <p>{description}</p> */}
+                            <div className="product_details">
+                                <h1>{product.title}</h1>
+                                <p><strong>Description:</strong>{product.description}</p>
+                                <p><strong>Price:</strong> ₹{product.price}</p>
+                                <p><strong>Rating:</strong> {product.rating}</p>
+                                <p><strong>Brand Name:</strong> {product.brandName}</p>
+                                <p><strong>Seller Name:</strong> {product.sellerName}</p>
+                                <p><strong>Generic Name:</strong> {product.genericName}</p>
+                                <p><strong>Net Quantity:</strong> {product.netQuantity}</p>
+                            </div>
                         </div>
                         <div className={`tab-pane ${activeTab === 'reviews' ? 'active' : ''}`}>
                             <ul>
@@ -205,27 +229,37 @@ const ProductPage = () => {
                                             <Icon icon={userIcon} size={30} />
                                             <div className="review-header">
                                                 <strong>{review.user}</strong>
-                                                
+
                                             </div>
                                         </div>
                                         <div className="review-content">
-                                        <span className="rating"> {renderStars(review.rating)}</span>
+                                            <span className="rating"> {renderStars(review.rating)}</span>
                                             <p className="review-text">{review.text}</p>
                                         </div>
                                         <div><p className="review-date">{date_convert(review.timestamp)}</p></div>
-                                        {console.log(date_convert(review.timestamp))}
                                     </li>
 
                                 ))}
                             </ul>
                             <button onClick={() => setShowModal(true)} >Submit Review</button>
-                            {console.log(showModal)}
+
                         </div>
                         <div className={`tab-pane ${activeTab === 'offers' ? 'active' : ''}`}>
                             <ul>
-                                {/* {offers.map((offer, index) => (
-                                    <li key={index}>{offer}</li>
-                                ))} */}
+                                {offers.map((offer, index) => (
+                                    <li key={index} className="offer-card_main">
+                                        <div className="offer-card">
+                                            <div className="offer-image">
+                                                <img src={offer.bankImage} alt={`${offer.bankName} logo`} />
+                                            </div>
+                                            <div className="offer-details">
+                                                <h3>{offer.bankName}</h3>
+                                                <p><strong>Discount:</strong> ₹{offer.discountAmount}</p>
+                                                <p><strong>Off:</strong> {offer.percentageOff}%</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
