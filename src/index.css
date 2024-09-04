@@ -115,6 +115,53 @@ body.dark-mode  .contact-item{
   background: #cd7228;
 }
 
+body.dark-mode .product-extra-details{
+  color: rgb(241, 232, 240);
+  background: #444;
+}
+body.dark-mode .tabs{
+  color: rgb(241, 232, 240);
+  background: #c97c3d;
+}
+body.dark-mode .tab{
+  color: rgb(241, 232, 240);
+  background: #c97c3d;
+}
+body.dark-mode .tabs button.active{
+  color: rgb(241, 232, 240);
+  background: #c55e09;
+}
+body.dark-mode .tabs button:hover{
+  color: rgb(241, 232, 240);
+  background: #c55e09;
+}
+body.dark-mode .review-card{
+  color: rgb(241, 232, 240);
+  background: #2b2927;
+}
+
+body.dark-mode .review-text{
+  color: rgb(241, 232, 240);
+  /* background: #2b2927; */
+}
+body.dark-mode .review-date{
+  color: rgb(241, 232, 240);
+  /* background: #2b2927; */
+}
+body.dark-mode .offer-card{
+  color: rgb(241, 232, 240);
+  background: #2b2927;
+}
+body.dark-mode .offer-card p{
+  color: rgb(241, 232, 240);
+  /* background: #2b2927; */
+}
+
+
+body.dark-mode .container{
+  color: rgb(241, 232, 240);
+  background: #2b2927;
+}
 
 
 
@@ -182,3 +229,4 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
